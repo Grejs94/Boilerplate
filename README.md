@@ -1,3 +1,4 @@
-# Getting Started with Create React App
+boilerplate by Gracjan Ludyga with:
 
-This boilerPlate react, redux, typescript with adding folders name and clear app.tsx
+- added useful folders
+- react-router-dom with map mainroutes component
