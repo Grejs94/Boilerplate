@@ -18,8 +18,7 @@ const App: React.FC = () => {
               component={route.component}
             />
           ))}
-          {/*  @reduxjs/toolkit */}
-          {/* react-redux */}
+          add variables and theme @material-ui/core add custom material button
         </Switch>
       </Wrapper>
     </Router>

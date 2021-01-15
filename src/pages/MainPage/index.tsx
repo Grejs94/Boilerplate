@@ -1,15 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
-import { selectExampleValue } from "features/example";
+import { ExampleInputs } from "./components";
 
 const MainPage: React.FC = () => {
-  const value = useSelector(selectExampleValue);
-
   return (
     <div>
-      MainPage
-      <div>value or redux example is: {value}</div>
+      <ExampleInputs />
     </div>
   );
 };

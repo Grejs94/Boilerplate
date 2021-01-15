@@ -9,6 +9,9 @@ export const groceriesSlice = createSlice({
     incrementValue: (state) => {
       state.value = ++state.value;
     },
+    decrementValue: (state) => {
+      state.value = --state.value;
+    },
     fetchDataStarted: (state) => {
       state.dataStatus = "inProgress";
     },
@@ -21,7 +24,13 @@ export const groceriesSlice = createSlice({
   },
 });
 
-export const { incrementValue } = groceriesSlice.actions;
+export const {
+  incrementValue,
+  decrementValue,
+  fetchDataStarted,
+  fetchDataSucceeded,
+  fetchDataFailed,
+} = groceriesSlice.actions;
 
 export const selectExampleValue = (state: any) => state.example.value;
 
