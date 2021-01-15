@@ -18,6 +18,8 @@ const App: React.FC = () => {
               component={route.component}
             />
           ))}
+          {/*  @reduxjs/toolkit */}
+          {/* react-redux */}
         </Switch>
       </Wrapper>
     </Router>
