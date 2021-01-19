@@ -7,10 +7,31 @@ export const groceriesSlice = createSlice({
   initialState,
   reducers: {
     incrementValue: (state) => {
+      if (state.value > 98) {
+        return;
+      }
+
       state.value = ++state.value;
     },
     decrementValue: (state) => {
+      if (state.value < 1) {
+        return;
+      }
+
       state.value = --state.value;
+    },
+    setValue: (state, action) => {
+      const payloadAsNumber = Number(action.payload);
+
+      if (!payloadAsNumber) {
+        return;
+      }
+
+      if (payloadAsNumber > 99 || payloadAsNumber < 0) {
+        return;
+      }
+
+      state.value = payloadAsNumber;
     },
     fetchDataStarted: (state) => {
       state.dataStatus = "inProgress";
@@ -27,6 +48,7 @@ export const groceriesSlice = createSlice({
 export const {
   incrementValue,
   decrementValue,
+  setValue,
   fetchDataStarted,
   fetchDataSucceeded,
   fetchDataFailed,

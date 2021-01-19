@@ -6,6 +6,7 @@ import {
   selectExampleValue,
   incrementValue,
   decrementValue,
+  setValue,
 } from "features/example";
 
 import * as Styles from "./styles";
@@ -22,6 +23,10 @@ const ExampleInputs = () => {
     dispatch(decrementValue());
   };
 
+  const handleInputChangeValue = (value: any) => {
+    dispatch(setValue(value));
+  };
+
   return (
     <div>
       <p>Redux state handle with Material buttons</p>
@@ -34,7 +39,12 @@ const ExampleInputs = () => {
         >
           +
         </Button>
-        <Styles.Input value={value} />
+        <Styles.Input
+          value={value}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleInputChangeValue(e.target.value)
+          }
+        />
         <Button
           variant="contained"
           color="primary"
