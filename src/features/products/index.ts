@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Dispatch } from "redux";
+
+import api from "api";
 
 import { initialState } from "./data";
 
 export const groceriesSlice = createSlice({
-  name: "example",
+  name: "products",
   initialState,
   reducers: {
     incrementValue: (state) => {
@@ -42,6 +45,9 @@ export const groceriesSlice = createSlice({
     fetchDataFailed: (state) => {
       state.dataStatus = "failed";
     },
+    setProductsData: (state, action) => {
+      state.products = action.payload;
+    },
   },
 });
 
@@ -52,8 +58,20 @@ export const {
   fetchDataStarted,
   fetchDataSucceeded,
   fetchDataFailed,
+  setProductsData,
 } = groceriesSlice.actions;
 
-export const selectExampleValue = (state: any) => state.example.value;
+export const fetchProducts = () => async (dispatch: Dispatch) => {
+  dispatch(fetchDataStarted());
+  try {
+    const productsData = await api.products.getProducts();
+    dispatch(setProductsData(productsData));
+    dispatch(fetchDataSucceeded());
+  } catch (error) {
+    dispatch(fetchDataFailed());
+  }
+};
+
+export const selectExampleValue = (state: any) => state.products.value;
 
 export default groceriesSlice.reducer;

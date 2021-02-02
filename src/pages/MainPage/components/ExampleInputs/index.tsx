@@ -7,7 +7,7 @@ import {
   incrementValue,
   decrementValue,
   setValue,
-} from "features/example";
+} from "features/products";
 
 import * as Styles from "./styles";
 
